@@ -1,24 +1,33 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { useDispatch } from 'react-redux';
+import{ addContact } from '../store/actions/Contact'
 
 function AddContact() {
-
-    function addContact() {
-        
+    const name = useRef();
+    const phoneNo = useRef();
+    const dispatch = useDispatch();
+    
+    function addContactDetail(event) {
+        event.preventDefault();
+        dispatch(addContact({
+            name: name.current.value,
+            phoneNo: phoneNo.current.value,
+        }));
     }
 
     return (
-        <div class="w-50 p-3">
-            <form onSubmit={addContact}>
-                <div class="form-group">
+        <div className="w-50 p-3">
+            <form id="addContactForm" name="addContactForm" onSubmit={addContactDetail}>
+                <div className="form-group">
                     <label for="name">Name</label>
-                    <input type="name" class="form-control" required="true" id="name" />
+                    <input type="text" className="form-control" required="true" id="name" name="name" ref={name} />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="phoneNo">Phone No</label>
-                    <input type="phoneNo" class="form-control" id="phoneNo" required="true" />
+                    <input type="phoneNo" className="form-control" id="phoneNo" required="true" name="phoneNo" ref={phoneNo} />
                 </div>
-                <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Add Contact</button>
+                <div className="form-group">
+                    <button className="btn btn-primary" type="submit">Add Contact</button>
                 </div>
             </form>
         </div>

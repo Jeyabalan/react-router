@@ -19,7 +19,7 @@ const Routing = () => {
         <Route exact path="/" component={App} />
         <Route exact path="/contact-list" component={ContactList} />
         <Route exact path="/add-contact" component={AddContact} />
-        <Route exact path="/edi-contact/:id" component={EditContact} />
+        <Route exact path="/edit-contact/:id" component={EditContact} />
       </Switch>
     </Router>
   )

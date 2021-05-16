@@ -9,16 +9,16 @@ import {
     EDIT_CONTACT_SUCCESSFUL,
     GET_CONTACT_FAILURE,
     GET_CONTACT_SUCCESSFUL,
+    GET_CONTACT_BY_ID,
 } from './actions/Types';
 
-const contactReducer = (state = initialState.contactState, action) => {
+const contactReducer = (state = [], action) => {
     switch (action.type) {
         case GET_CONTACT_SUCCESSFUL:
             return {
                 ...state,
                 contact: [
-                    ...state.contact,
-                    ...action.paload,
+                    ...action.payload
                 ],
             };
         case GET_CONTACT_FAILURE:
@@ -56,6 +56,12 @@ const contactReducer = (state = initialState.contactState, action) => {
                 ...state,
                 error: action.error,
             };
+        case GET_CONTACT_BY_ID: {
+            return {
+                ...state,
+                selectedContact: action.payload
+            }
+        }
         default:
             return state;
     }

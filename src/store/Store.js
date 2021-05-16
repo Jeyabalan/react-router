@@ -8,6 +8,7 @@ export const initialState = {
         contact: [],
         loading: false,
         error: null,
+        selectedContact: null,
     },
 }
 const middleware = [thunk];
